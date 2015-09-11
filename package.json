@@ -1,0 +1,23 @@
+{
+  "name": "blockchain-downloader",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^1.4.2",
+    "devp2p": "0.0.2",
+    "ethereum-common": "0.0.10",
+    "ethereumjs-block": "0.0.9",
+    "ethereumjs-blockchain": "0.0.3",
+    "ethereumjs-tx": "^0.6.3",
+    "ethereumjs-util": "^1.3.7",
+    "external-ip": "^0.2.3",
+    "level": "^1.3.0",
+    "nat-upnp": "^0.2.11"
+  }
+}
