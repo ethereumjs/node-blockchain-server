@@ -1,3 +1,7 @@
+### App specific ###
+
+blockchaindb
+
 # Created by https://www.gitignore.io/api/osx,node
 
 ### OSX ###
@@ -6,7 +10,8 @@
 .LSOverride
 
 # Icon must end with two \r
-Icon
+Icon
+
 
 # Thumbnails
 ._*
