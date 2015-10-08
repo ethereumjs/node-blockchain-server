@@ -1,6 +1,7 @@
 ### App specific ###
 
 blockchaindb
+statedb
 
 # Created by https://www.gitignore.io/api/osx,node
 
