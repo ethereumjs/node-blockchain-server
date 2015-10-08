@@ -16,8 +16,11 @@
     "ethereumjs-blockchain": "0.0.3",
     "ethereumjs-tx": "^0.6.3",
     "ethereumjs-util": "^1.3.7",
+    "ethereumjs-vm": "^1.0.0",
     "external-ip": "^0.2.3",
     "level": "^1.3.0",
-    "nat-upnp": "^0.2.11"
+    "merkle-patricia-tree": "^2.0.3",
+    "nat-upnp": "^0.2.11",
+    "semaphore": "^1.0.3"
   }
 }

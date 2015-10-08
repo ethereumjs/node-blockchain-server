@@ -40,7 +40,8 @@ SyncManager.prototype.downloadChain = function(peer, startHeight, cb){
         console.log('added blocks');
         console.log(self.blockchain.meta);
 
-        if(hashes[hashes.length - 1].toString('hex') === peer.status.bestHash.toString('hex'))
+        var lastHash = hashes[hashes.length - 1]
+        if(lastHash && lastHash.toString('hex') === peer.status.bestHash.toString('hex'))
           return cb()
         else{
           console.log(startHeight);

@@ -8,7 +8,7 @@ const rlp = ethUtil.rlp
 const OFFSET = 0x10
 const TYPES = {
   0x0: 'status',
-  0x1: 'getTransactions',
+  0x1: 'newBlockHashes',
   0x2: 'transactions',
   0x3: 'getBlockHashes',
   0x4: 'blockHashes',
@@ -20,7 +20,7 @@ const TYPES = {
 
 const OFFSETS = {
   'status': 0x0,
-  'getTransactions': 0x1,
+  'newBlockHashes': 0x1,
   'transactions': 0x2,
   'getBlockHashes': 0x3,
   'blockHashes': 0x4,
@@ -95,6 +95,9 @@ var parsingFunc = {
     return payload;
   },
   getBlocks: function(payload) {
+    return payload;
+  },
+  newBlockHashes: function(payload) {
     return payload;
   },
   blocks: function(payload) {
