@@ -16,25 +16,7 @@ var blockchain = new Blockchain(db, false)
 var self = this
 var port = 30304
 
-async.series([
-  maybeGenerateGenesis,
-  doTheTango,
-])
-
-
-function maybeGenerateGenesis(done) {
-  console.log('maybeGenerateGenesis - before')
-  blockchain.getHead(function (err, h) {
-    if (err) {
-      blockchain.setCanonicalGenesisBlock(function(err, _head){
-        if (err) return done(err)
-        done()
-      })
-    } else {
-      done()
-    }
-  })
-}
+doTheTango()
 
 function doTheTango(){
 
@@ -104,7 +86,6 @@ function doTheTango(){
 
       peerMan.on('blockHashesFromNumber', function (data) {
         console.log(data.startNumber.toString('hex'));
-
         console.log('exiting....');
         process.exit()
       })
