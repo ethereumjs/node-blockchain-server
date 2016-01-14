@@ -1,2 +1,2 @@
 # node-blockchain-server
-a simple blockchain server (downloads block and serves them, doesn't do state transitions)
+A simple blockhain server that downloads blocks and serves them. It doesn't do state transitions and offers no API apart from the P2P layer.
