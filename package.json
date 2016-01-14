@@ -1,13 +1,26 @@
 {
-  "name": "blockchain-downloader",
+  "name": "node-blockchain-server",
   "version": "1.0.0",
-  "description": "",
+  "description": "A simple blockhain server that downloads blocks and serves them.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ethereumjs/node-blockchain-server.git"
+  },
+  "keywords": [
+    "ethereum",
+    "p2p",
+    "networking"
+  ],
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ethereumjs/node-blockchain-server/issues"
+  },
+  "homepage": "https://github.com/ethereumjs/node-blockchain-server",
   "dependencies": {
     "async": "^1.4.2",
     "devp2p": "0.0.4",
