@@ -20,6 +20,8 @@ doTheTango()
 
 function doTheTango(){
 
+  console.log('do da tango')
+
   var network = new Network({
     address: '0.0.0.0',
     publicIp: '127.0.0.1',
@@ -27,13 +29,16 @@ function doTheTango(){
     // peerDB: peerDB,
     secretKey: new Buffer('a153387bcc66f16b6aeaed404d3c3e2ec04f3a85c6942e9de107fb8b2f71e322', 'hex'),
     capabilities: {
-      eth: 61
+      eth: 62
     }
   })
+
+  console.log(network.dpt.id.toString('hex'))
 
   var syncManager = new SyncManager(blockchain)
 
   network.on('connection', function (peer) {
+    console.log('connection')
     var stream = peer.createStream()
     var head
     var headDetails
@@ -43,8 +48,16 @@ function doTheTango(){
       console.log('stream ended')
     })
 
+    stream.on('error', function(){
+      console.log('err')
+    })
+
     var peerMan = new EthPeerManager(stream)
     setupPeerHandlers()
+
+    peerMan.on('error', function(){
+      console.log('error')
+    })
 
     // initialize
     // lock until initialization complete
@@ -73,6 +86,7 @@ function doTheTango(){
           console.log('prcoessing status');
           //dissconect if wrong genesis
           if (genesisHash !== status.genesisHash.toString('hex')) {
+            console.log('disconnect')
             peer.sendDisconnect(peer.DISCONNECT_REASONS.SUBPROTOCOL_REASON)
           } else {
             console.log('td: ' + status.td.toString('hex'));
@@ -84,10 +98,19 @@ function doTheTango(){
         })
       })
 
-      peerMan.on('blockHashesFromNumber', function (data) {
-        console.log(data.startNumber.toString('hex'));
-        console.log('exiting....');
-        process.exit()
+      peerMan.on('getBlockHeaders', function (data) {
+        console.log('getBlockHeaders', data)
+
+        console.log(blockchain.blocks)
+
+        if (data.startNumber){
+          const blocks = blockchain
+        } else if(data.startHash) {
+          throw new Error('getBlockHeaders by hash hash not implemented')
+        }
+        peerMan.sendBlockHeaders([])
+        //console.log('exiting....');
+        //process.exit()
       })
 
     }
@@ -97,8 +120,8 @@ function doTheTango(){
       blockchain.getHead(function (err, h) {
         console.log('getHead - after')
         head = h
-        console.log('blockchain.meta:')
-        console.log(blockchain.meta)
+        //console.log('blockchain.meta:')
+        //console.log(blockchain.meta)
         done()
       })
     }
