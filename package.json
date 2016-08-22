@@ -26,7 +26,7 @@
     "devp2p": "^0.0.5",
     "ethereum-common": "^0.0.13",
     "ethereumjs-block": "^1.2.0",
-    "ethereumjs-blockchain": "^1.4.0",
+    "ethereumjs-blockchain": "git+https://git@github.com/ethereumjs/ethereumjs-blockchain.git#getBlocks",
     "ethereumjs-tx": "^0.6.10",
     "ethereumjs-util": "^2.5.0",
     "ethereumjs-vm": "^1.1.0",

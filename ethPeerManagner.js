@@ -75,15 +75,11 @@ var parsingFunc = {
   },
   getBlockHeaders: function(payload) {
     const parsed = {
+      start: payload[0].length < 6 ? ethUtil.bufferToInt(payload[0]) : payload[0],
       maxBlocks: ethUtil.bufferToInt(payload[1]),
       skip: ethUtil.bufferToInt(payload[2]),
-      reverse: (payload[3][0] === 1) ? true : false
+      reverse: (payload[3][0] === 1) ? true : false,
     };
-
-    if(payload[0].length < 6)
-      parsed.startNumber = ethUtil.bufferToInt(payload[0])
-    else
-      parsed.startHash = payload[0]
 
     return parsed
   },
@@ -188,15 +184,8 @@ Manager.prototype.sendGetBlockBodies = function(hashes, cb) {
   this.send(OFFSETS.getBlockBodies, msg, cb);
 };
 
-Manager.prototype.sendBlockBodies = function(blocks, cb) {
-  var msg = [];
-
-  blocks.forEach(function(block, index) {
-    var body = block.serialize(false)
-    body.shift()
-    msg.push(body);
-  });
-
+Manager.prototype.sendBlockBodies = function(bodies, cb) {
+  var msg = bodies.slice();
   this.send(OFFSETS.blockBodies, msg, cb);
 };
 

@@ -99,18 +99,34 @@ function doTheTango(){
       })
 
       peerMan.on('getBlockHeaders', function (data) {
-        console.log('getBlockHeaders', data)
+        blockchain.getBlocks(data.start, data.maxBlocks, data.skip, data.reverse, function(err, blocks){
+          if(err) return
+          var headers = blocks.map(function(block){
+            return block.serialize(false)[0]
+          })
+          peerMan.sendBlockHeaders(headers)
+        })
+      })
 
-        console.log(blockchain.blocks)
+      peerMan.on('getBlockBodies', function (hashes) {
 
-        if (data.startNumber){
-          const blocks = blockchain
-        } else if(data.startHash) {
-          throw new Error('getBlockHeaders by hash hash not implemented')
-        }
-        peerMan.sendBlockHeaders([])
-        //console.log('exiting....');
-        //process.exit()
+        var bodies = []
+
+        async.series(hashes.map(function(hash){
+
+          return function(done){
+            blockchain.getBlock(hash, function(err, block){
+              if (err) return done(err)
+              var serializedBlock = block.serialize(false)
+              serializedBlock.unshift()
+              bodies.push(serializedBlock)
+            })
+          }
+
+        }), function(done){
+          peerMan.sendBlockBodies(bodies)
+        })
+
       })
 
     }
