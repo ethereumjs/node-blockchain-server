@@ -7,7 +7,7 @@ const Blockchain = require('ethereumjs-blockchain')
 const Block = require('ethereumjs-block')
 const Network = require('devp2p')
 const genesisHash = require('ethereum-common').genesisHash.v.slice(2)
-const EthPeerManager = require('./ethPeerManagner.js')
+const EthPeerManager = require('devp2p-eth')
 const SyncManager = require('./syncManager.js')
 
 var db = leveldb('./blockchaindb')

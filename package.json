@@ -24,6 +24,7 @@
   "dependencies": {
     "async": "^1.4.2",
     "devp2p": "^0.0.5",
+    "devp2p-eth": "https://github.com/ethereumjs/node-devp2p-eth",
     "ethereum-common": "^0.0.13",
     "ethereumjs-block": "^1.2.0",
     "ethereumjs-blockchain": "^1.4.0",
