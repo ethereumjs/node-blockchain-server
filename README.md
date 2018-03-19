@@ -1,2 +1,6 @@
 # node-blockchain-server
-A simple blockhain server that downloads blocks and serves them. It doesn't do state transitions and offers no API apart from the P2P layer.
+
+**This library is outdated**.
+
+You can find a similar example application as a part of the
+[ethereumjs-devp2p](https://github.com/ethereumjs/ethereumjs-devp2p) package.
